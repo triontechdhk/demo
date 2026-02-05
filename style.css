@@ -154,14 +154,17 @@ section {
     position: relative;
 }
 /* Mobile Adjustments */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .nav-brand {
-        font-size: 1rem; /* Smaller font on phones */
-        max-width: 70%;  /* Allow more width so it doesn't break too much */
+        /* Reduces font size specifically for the smallest devices */
+        font-size: 0.8rem !important; 
+        letter-spacing: 0px;
+        max-width: 65%;
     }
     
-    .nav-links {
-        gap: 0; /* Reset gap for mobile stack */
+    .navbar {
+        padding: 10px 15px;
+        height: 60px; /* Consistent height */
     }
 }
 
@@ -337,8 +340,27 @@ section {
 }
 
 @media (max-width: 768px) {
-    .hero-btn-container { flex-direction: column; align-items: center; }
-    .hero-btn { width: 80%; }
+    .hero-content {
+        padding: 15px;
+    }
+
+    .hero h1 {
+        /* Prevent long words from breaking the layout */
+        word-break: break-word; 
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    /* Stack buttons with a slight gap */
+    .hero-btn-container {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .hero-btn {
+        width: 100%; /* Full width buttons are easier to tap on mobile */
+        max-width: 300px;
+    }
 }
 
 /* ================== ANIMATIONS ================== */
@@ -653,6 +675,29 @@ section {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .impact-section-radial {
+        padding: 40px 15px; /* Tighter padding */
+    }
+
+    /* Shrink the radial circles so they don't hit screen edges */
+    .radial-progress {
+        width: 110px; 
+        height: 110px;
+        margin-bottom: 15px;
+    }
+
+    /* Scale down the big numbers */
+    .radial-details h3 {
+        font-size: 2rem;
+    }
+
+    /* Make the inner icon smaller to match the circle */
+    .inner-icon {
+        font-size: 30px;
+    }
 }
 
 /* ================== GALLERY (Premium Center) ================== */
