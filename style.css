@@ -277,6 +277,53 @@ section {
     width: 100%;
 }
 
+/* ================== MOBILE HERO TEXT FIX ================== */
+@media (max-width: 768px) {
+    .hero h1 {
+        /* Allow text to wrap to the next line */
+        white-space: normal !important; 
+        
+        /* Change from flex to block for natural text wrapping */
+        display: block !important; 
+        
+        /* Adjust font size for mobile screens */
+        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+        
+        /* Improve readability with proper line height */
+        line-height: 1.2 !important;
+        
+        /* Ensure it stays centered */
+        text-align: center;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .hero-content {
+        /* Add side padding so text doesn't touch screen edges */
+        padding: 0 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 30px;
+    }
+
+    /* Ensure buttons don't overlap on very small screens */
+    .hero-btn-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .hero-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
 .hero p {
     font-size: 1.5rem;
     font-weight: 500;
