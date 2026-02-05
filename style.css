@@ -155,16 +155,39 @@ section {
 }
 /* Mobile Adjustments */
 /* Ensure the brand and menu don't overlap on medium screens */
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
     .navbar {
-        padding: 15px 20px;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between; /* Keeps brand left, toggle right */
+        align-items: center;
+        flex-wrap: nowrap; /* Prevents the menu button from jumping to a new line */
     }
+
     .nav-brand {
-        font-size: 1rem;
-        flex-shrink: 1; /* Allows the logo to shrink rather than pushing the menu off-screen */
+        font-size: 0.85rem !important; /* Smaller text for smaller screens */
+        max-width: 70%; /* Reserve 30% for the hamburger icon */
+        white-space: normal; /* Allow the long name to wrap into 2-3 lines */
+        line-height: 1.2;
+        display: block;
     }
+
+    .menu-toggle {
+        display: block;
+        position: relative; /* Removes the absolute positioning that causes overlap */
+        right: 0;
+        top: 0;
+        transform: none; /* Reset the centering transform */
+        font-size: 24px;
+        z-index: 1001;
+    }
+
+    /* Fix the mobile menu overlap */
     .nav-links {
-        gap: 15px; /* Tighter gap for tablet view before the hamburger kicks in */
+        top: 100%; /* Ensures menu starts exactly where navbar ends */
+        height: auto;
+        max-height: 80vh; /* Prevents menu from being taller than the screen */
+        overflow-y: auto;
     }
 }
 
@@ -178,35 +201,6 @@ section {
     left: 0;
     background-color: var(--accent-color);
     transition: width 0.3s;
-}
-
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { width: 100%; }
-
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    position: absolute;
-    right: 24px;
-    color: var(--white);
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: var(--primary-dark);
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        text-align: center;
-        padding: 30px 0;
-        box-shadow: var(--shadow-lg);
-    }
-    .nav-links.active { display: flex; }
-    .menu-toggle { display: block; }
 }
 
 /* ================== HERO SECTION (Full Width) ================== */
