@@ -154,17 +154,17 @@ section {
     position: relative;
 }
 /* Mobile Adjustments */
-@media (max-width: 600px) {
-    .nav-brand {
-        /* Reduces font size specifically for the smallest devices */
-        font-size: 0.8rem !important; 
-        letter-spacing: 0px;
-        max-width: 65%;
-    }
-    
+/* Ensure the brand and menu don't overlap on medium screens */
+@media (max-width: 1100px) {
     .navbar {
-        padding: 10px 15px;
-        height: 60px; /* Consistent height */
+        padding: 15px 20px;
+    }
+    .nav-brand {
+        font-size: 1rem;
+        flex-shrink: 1; /* Allows the logo to shrink rather than pushing the menu off-screen */
+    }
+    .nav-links {
+        gap: 15px; /* Tighter gap for tablet view before the hamburger kicks in */
     }
 }
 
@@ -278,25 +278,12 @@ section {
 }
 
 /* ================== MOBILE HERO TEXT FIX ================== */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .hero h1 {
-        /* Allow text to wrap to the next line */
-        white-space: normal !important; 
-        
-        /* Change from flex to block for natural text wrapping */
-        display: block !important; 
-        
-        /* Adjust font size for mobile screens */
-        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
-        
-        /* Improve readability with proper line height */
-        line-height: 1.2 !important;
-        
-        /* Ensure it stays centered */
-        text-align: center;
-        width: 100%;
-        margin-bottom: 15px;
+        word-break: keep-all; /* Keeps words whole while allowing wrapping */
+        overflow-wrap: break-word;
     }
+}
 
     .hero-content {
         /* Add side padding so text doesn't touch screen edges */
