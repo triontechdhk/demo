@@ -128,16 +128,14 @@ section {
     will-change: transform, opacity;
 }
 
-.nav-brand {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-    max-width: 60%;
-    transition: color 0.3s ease;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 10px 20px;
 }
 
 .navbar.fade-in {
@@ -1207,11 +1205,6 @@ button:active, .hero-btn:active {
     transform: translateY(0);
 }
 
-/* 4. Dropdown Items */
-.dropdown-menu li {
-    display: block;
-    margin: 0;
-}
 
 .dropdown-menu li a {
     display: block;
@@ -1237,26 +1230,14 @@ button:active, .hero-btn:active {
     padding-left: 30px; /* Slide right effect */
 }
 
-/* ================== MEDIA QUERIES (Fresh & Simple) ================== */
-
-/* --- TABLETS & SMALL LAPTOPS (1024px) --- */
-@media (max-width: 1024px) {
-    section {
-        padding: 80px 20px; /* Breathe more on mid-size screens */
-    }
-    
-    .hero h1 {
-        font-size: 3.2rem; /* Moderate scale down */
-    }
-}
-
 /* --- MOBILE PHONES & PORTRAIT TABLETS (768px) --- */
 @media (max-width: 768px) {
     
     /* 1. Navbar Logic */
     .navbar {
+        font-size: 0.9rem !important;
         width: 100%;
-        max-width: 100vw;
+        max-width: 100%;
         padding: 10px 15px; /* Tighter padding for mobile */
         left: 0;
         right: 0;
@@ -1265,46 +1246,55 @@ button:active, .hero-btn:active {
         justify-content: space-between;
     }
     .menu-toggle {
-        display: block; /* Visible on mobile */
-        cursor: pointer;
+        display: block;
         font-size: 28px;
         color: #fff;
+        cursor: pointer;
     }
 
-   .nav-links {
-        display: none; /* Hide the horizontal row */
+    .nav-links {
+        display: none;
         position: fixed;
-        top: 60px; /* Adjust based on navbar height */
+        top: 60px;
         left: 0;
         width: 100%;
         height: calc(100vh - 60px);
         background: var(--glass-bg);
         flex-direction: column;
         align-items: center;
-        padding-top: 50px;
+        padding-top: 40px;
         z-index: 999;
     }
 
-    .dropdown-menu {
-        position: static; /* Removes the absolute 'floating' behavior */
-        width: 100% !important;
-        min-width: 100% !important;
-        opacity: 1 !important; /* Make it visible when toggled */
-        visibility: visible !important;
-        transform: none !important;
-        box-shadow: none; /* Clean up for mobile stack */
-        background: rgba(255, 255, 255, 0.05); /* Subtle distinction */
-        display: none; /* Hide by default, toggle with JS or hover */
+    .nav-links.active {
+        display: flex;
     }
 
-    /* Show the sub-menu when the parent is hovered/active */
-    .dropdown:hover .dropdown-menu {
+    /* DROPDOWN FIX */
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        display: none;           /* CLOSED by default */
+        position: static;
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        box-shadow: none;
+        margin-top: 5px;
+        padding: 0;
+        border-radius: 8px;
+    }
+
+    /* OPEN ONLY WHEN JS ADDS .active */
+    .dropdown.active .dropdown-menu {
         display: block;
     }
 
     .dropdown-menu li a {
-        padding-left: 40px; /* Indent sub-items so they look nested */
-        white-space: normal; /* Allow text to wrap if it's long */
+        padding: 12px 40px;
+        font-size: 0.95rem;
     }
 
     .nav-links.active {
@@ -1368,47 +1358,5 @@ button:active, .hero-btn:active {
 
     .contact-container-modern {
         padding: 40px 20px;
-    }
-}
-
-/* --- SMALL PHONES (480px) --- */
-@media (max-width: 480px) {
-    .section-title {
-        font-size: 1.8rem;
-    }
-    .animate-words {
-        /* Prevent letters from stretching or overflowing */
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
-        padding: 0 10px;
-        letter-spacing: -0.5px; /* Tighter look for shorter screens */
-    }
-
-    .animate-words span {
-        /* Slightly faster animation on mobile for a snappier feel */
-        animation-duration: 0.5s; 
-        /* Ensure spans don't get stuck in a 'hidden' state if there's a JS lag */
-        will-change: transform, opacity;
-    }
-    .hero h1 {
-        font-size: 1.75rem !important; /* Fixed size for very small phones */
-        padding: 0 10px;
-    }
-    
-    .hero-content {
-        padding: 0 10px;
-    }
-
-    .stat-card-radial {
-        padding: 30px 15px;
-        border-radius: 30px;
-    }
-
-    .radial-progress {
-        width: 100px;
-        height: 100px;
-    }
-
-    .counter {
-        font-size: 2rem;
     }
 }
