@@ -124,30 +124,23 @@ leadership.</p>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
-        threshold: 0.2 // Animation starts when 20% of the card is visible
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Triggers when 15% of the card is visible
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add the class that forces opacity: 1
                 entry.target.classList.add('appear');
-                // Optional: Stop observing once animation is done
+                // Stop watching this element after it appears once
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Select both founder cards and start observing them
-    const founderCards = document.querySelectorAll('.founder-card');
-    founderCards.forEach(card => observer.observe(card));
+    const cards = document.querySelectorAll('.founder-card');
+    cards.forEach(card => observer.observe(card));
 });
-
-function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("active");
-    
-    // Optional: Toggle a class on the hamburger to change it to an 'X'
-    const menuBtn = document.querySelector(".menu-toggle");
-    menuBtn.innerHTML = nav.classList.contains("active") ? "✕" : "☰";
-}
 </script>
