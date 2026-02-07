@@ -1423,7 +1423,7 @@ button:active, .hero-btn:active {
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(0%) translateY(0%);
 }
 
 .dropdown-link {
@@ -1596,3 +1596,4 @@ button:active, .hero-btn:active {
         padding: 40px 20px;
     }
 }
+
