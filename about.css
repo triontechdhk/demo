@@ -402,7 +402,7 @@ border: 1px solid rgba(137, 123, 123, 0.21);
 
 
 /* ================== MOBILE RESPONSIVENESS ================== */
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     .nav-container { padding: 1rem 20px; }
     .hamburger { display: block; z-index: 1002; }
 
