@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="glass-nav">
+    <div class="nav-container">
+        <a href="#home" class="nav-brand">Institute for Global Cooperation Foundation</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle">About ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="about.html#about-hero" class="dropdown-link">The IGC Story</a></li>
+                    <li><a href="about.html#cards-grid" class="dropdown-link">Vision & Mission</a></li>
+                    <li><a href="about.html#founders" class="dropdown-link">Leadership Team</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle">Activities ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-link">Capacity Development</a></li>
+                    <li><a href="#" class="dropdown-link">Policy Advocacy</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="#events" class="nav-link">News</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+    <section class="about-hero">
+        <div class="container">
+            <h1>About IGCF</h1>
+            <p class="tagline">Youth Leadership • Opportunity Creation • Universal Values</p>
+            <p class="tagline">Trust Building • Hope for the Future</p>
+        </div>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="intro-text">
+                <h2>Who We Are</h2>
+                <p>We are the Institute for Global Cooperation Foundation (IGCF)—a vibrant, youth-led think
+tank dedicated to a single powerful idea: that the young people of today are the architects
+of tomorrow.
+Founded and driven by young changemakers, we provide a dynamic platform where fresh
+perspectives meet serious policy. We move beyond theory to action, equipping emerging
+leaders with the practical skills, global networks, and research experience needed to tackle
+Bangladesh’s most pressing challenges—from governance and climate resilience to
+inclusive development and security. 
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    
+                    <h3>Our Vision</h3>
+                    <p>To become the leading youth-led voice in Bangladesh, known for turning fresh ideas into
+actionable policy and fostering genuine global cooperation through the power of young
+leadership.</p>
+                </div>
+
+                <div class="card">
+                    
+                    <h3>Our Mission</h3>
+                    <p>We empower youth to lead, innovate, and collaborate by putting them at the forefront of research and policy conversations that shape their future, 
+                        equipping them with practical skills and strong networks to drive real change, 
+                        and connecting young Bangladeshis with global peers to collectively tackle challenges like climate change and sustainable development.</p>            
+</div>
+        </div>
+    </section>
+
+    <section class="founders-section" id="founders">
+    <div class="container">
+        <h2 class="section-title">Founders</h2>
+        
+        <div class="founders-grid">
+            <div class="founder-card">
+                <div class="image-wrapper">
+                    <img src="mmm.webp" alt="Chairman">
+                </div>
+                <div class="founder-info">
+                    <h3>Mahmudur Rahman</h3>
+                    <span class="designation">Chairman</span>
+                    <p class="bio">
+                        Mahmudur Rahman is the Chairman of IGCF. His work focuses on social protection, refugee response, jobs, and private sector development. He is also a business icon in Bangladesh.
+                    </p>
+                </div>
+            </div>
+
+            <div class="founder-card">
+                <div class="image-wrapper">
+                    <img src="mmm2.webp" alt="Director">
+                </div>
+                <div class="founder-info">
+                    <h3>Shama Obaed</h3>
+                    <span class="designation">Director</span>
+                    <p class="bio">
+                        Shama is a behavioural research and design professional supporting IGCF's Social Innovation Lab. He focuses on designing innovative prototypes for social protection and systems transformation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2 // Animation starts when 20% of the card is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                // Optional: Stop observing once animation is done
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Select both founder cards and start observing them
+    const founderCards = document.querySelectorAll('.founder-card');
+    founderCards.forEach(card => observer.observe(card));
+});
+
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+    
+    // Optional: Toggle a class on the hamburger to change it to an 'X'
+    const menuBtn = document.querySelector(".menu-toggle");
+    menuBtn.innerHTML = nav.classList.contains("active") ? "✕" : "☰";
+}
+</script>
